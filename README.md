@@ -1,8 +1,7 @@
-TODO REPLACE WITH REPO NAME
+NEAR PACKAGE
 ===========================
-TODO replace with repo description
+Starlark version of the near-kurtosis-module
 
-TODO COMPLETE AND DELETE
 ------------------------
 CONFIGURE GENERAL REPO SETTINGS
 1. [ ] Check "always suggest updating pull request branches"
