@@ -21,7 +21,7 @@ Starlark version of the near-kurtosis-module
 		- [x] framework
 		- [x] fetch, parse and return validator key - Requires product change
 	- [x] contract_helper
-	- [ ] explorer_backend
+	- [x] explorer_backend
 	- [ ] explorer_frontend
 	- [ ] wallet
 - [ ] readme & other project meta content
