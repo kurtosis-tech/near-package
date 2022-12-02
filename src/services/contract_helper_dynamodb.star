@@ -30,6 +30,8 @@ def add_contract_helper_dynamo_db():
 			""
 	)
 
+	# TODO Add productized wait for port availability
+
 	return new_contract_helper_dynamodb_info(private_url)
 
 
