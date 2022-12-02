@@ -11,17 +11,17 @@ Starlark version of the near-kurtosis-module
 - [x] static files
 - [x] service_port_availability_checker DESCOPED - broken on OG repo
 - [x] service_urls
-- [ ] near_module_configurator
+- [x] near_module_configurator - DESCOPED - this did log level setting (which we don't have) & param(which we do via pacakge_io)
 - [ ] near_module
 - [x] consts
 - [ ] services
-	- [ ] contract_helper
 	- [x] contract_helper_dynamodb
 	- [x] contract_helper_postgresql
-	- [ ] explorer_backend
-	- [ ] explorer_frontend
 	- [x] indexer
 		- [x] framework
 		- [x] fetch, parse and return validator key - Requires product change
+	- [ ] contract_helper
+	- [ ] explorer_backend
+	- [ ] explorer_frontend
 	- [ ] wallet
 - [ ] readme & other project meta content
