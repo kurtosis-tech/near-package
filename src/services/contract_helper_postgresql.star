@@ -1,7 +1,5 @@
 shared_utils = import_module("github.com/kurtosis-tech/near-package/src/shared_utils.star")
 constants = import_module("github.com/kurtosis-tech/near-package/src/constants.star")
-
-# TODO implement this
 service_url = import_module("github.com/kurtosis-tech/near-package/src/service_url.star")
 
 
