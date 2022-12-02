@@ -88,7 +88,7 @@ def add_contract_helper_db():
 
 def new_contract_helper_db_info(
         private_url,
-        db_user_name,
+        db_username,
         db_password,
         indexer_db,
         analytics_db,
@@ -96,7 +96,7 @@ def new_contract_helper_db_info(
     ):
     return struct (
         private_url = private_url,
-        db_user_name = db_user_name,
+        db_username = db_username,
         db_password = db_password,
         indexer_db = indexer_db,
         analytics_db = analytics_db,

@@ -20,7 +20,7 @@ def get_private_and_public_url_for_port_id(
 	if not hasattr(service_config, "public_ports"):
 		return private_url, public_url
 
-	public_ports = service_config["public_ports"]
+	public_ports = service_config.public_ports
 
 	if port_id not in public_ports:
 		fail("Expected service with ID {0} to have public port with port id {1}", service_id, port_id)

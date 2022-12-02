@@ -9,7 +9,7 @@ Starlark version of the near-kurtosis-module
 
 - [x] package IO
 - [x] static files
-- [x] service_port_availability_checker DESCOPED - done through waits
+- [x] service_port_availability_checker DESCOPED - broken on OG repo
 - [x] service_urls
 - [ ] near_module_configurator
 - [ ] near_module
@@ -21,5 +21,7 @@ Starlark version of the near-kurtosis-module
 	- [ ] explorer_backend
 	- [ ] explorer_frontend
 	- [ ] indexer
+		- [x] framework
+		- [ ] fetch, parse and return validator key - Requires product change
 	- [ ] wallet
 - [ ] readme & other project meta content
