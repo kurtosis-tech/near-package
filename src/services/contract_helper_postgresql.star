@@ -66,7 +66,7 @@ def add_contract_helper_db():
         ]
         exec(SERVICE_ID, create_db_command, constants.EXEC_COMMAND_SUCCESS_EXIT_CODE)
 
-    private_url, public_url = service_url.get_private_and_public_url_for_port_id(
+    private_url, _ = service_url.get_private_and_public_url_for_port_id(
             SERVICE_ID,
             add_service_result,
             config,

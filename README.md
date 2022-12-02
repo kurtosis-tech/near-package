@@ -16,7 +16,7 @@ Starlark version of the near-kurtosis-module
 - [x] consts
 - [ ] services
 	- [ ] contract_helper
-	- [ ] contract_helper_dynamodb
+	- [x] contract_helper_dynamodb
 	- [x] contract_helper_postgresql
 	- [ ] explorer_backend
 	- [ ] explorer_frontend
