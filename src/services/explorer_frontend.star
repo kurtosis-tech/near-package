@@ -38,8 +38,7 @@ def add_explorer_frontend_service(
 	# a link to the Wallet using that static public port before the Wallet has started (and the Wallet will be
 	# started afterwards). This code here is for creating the link to the Wallet before the Wallet has started.
 	wallet_public_url = "http://{0}:{1}".format(user_requested_backend_ip_address, wallet.PUBLIC_PORT_NUM)
-	networks_config_json= """
-	{
+	networks_config_json = {
 		"mainnet": {
 			"explorerLink": "https://explorer.near.org/",
 			"aliases": ["explorer.near.org", "explorer.mainnet.near.org", "explorer.nearprotocol.com", "explorer.mainnet.nearprotocol.com"],
@@ -56,12 +55,11 @@ def add_explorer_frontend_service(
 			"nearWalletProfilePrefix": "https://wallet.openshards.io/profile"
 		},
 		"localnet": {
-			"explorerLink": "{}",
+			"explorerLink": service_url.service_url_to_string_with_override(explorer_backend_public_url,user_requested_backend_ip_address),
 			"aliases": [],
-			"nearWalletProfilePrefix": "${1}/profile"
+			"nearWalletProfilePrefix": "${0}/profile".format(wallet_public_url)
 		}
 	}
-	""".format(service_url.service_url_to_string_with_override(explorer_backend_public_url,user_requested_backend_ip_address), wallet_public_url)
 
 	env_vars = {
 		# TODO MAKE THIS MATCH BACKEND???
@@ -69,7 +67,7 @@ def add_explorer_frontend_service(
 		# from https://github.com/near/near-explorer/blob/b29f5830e431f3198ed409643d8930580806d1e4/frontend.env#L1
 		"NEAR_EXPLORER_CONFIG__SEGMENT_WRITE_KEY": "7s4Na9mAfC7092R6pxrwpfBIAEek9Dne",
 		"NEAR_EXPLORER_CONFIG__NETWORK_NAME": "localnet",
-		"NEAR_EXPLORER_CONFIG__NETWORKS": networks_config_json,
+		"NEAR_EXPLORER_CONFIG__NETWORKS": json.encode(networks_config_json),
 
 		"PORT": str(PRIVATE_PORT_NUM),
 
