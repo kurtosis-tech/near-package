@@ -80,7 +80,7 @@ def add_explorer_frontend_service(
 		"NEAR_EXPLORER_CONFIG__BACKEND__HOSTS__MAINNET": user_requested_backend_ip_address,
 		"NEAR_EXPLORER_CONFIG__BACKEND__HOSTS__TESTNET": user_requested_backend_ip_address,
 		"NEAR_EXPLORER_CONFIG__BACKEND__HOSTS__GUILDNET": user_requested_backend_ip_address,
-		"NEAR_EXPLORER_CONFIG__BACKEND__PORT": str(explorer_backend_private_url.port_number),
+		"NEAR_EXPLORER_CONFIG__BACKEND__PORT": str(explorer_backend_public_url.port_number),
 		"NEAR_EXPLORER_CONFIG__BACKEND__SECURE": "false",
 	}
 
