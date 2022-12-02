@@ -7,21 +7,20 @@ SERVICE_ID = "contract-helper-service"
 PORT_ID = "rest";
 PRIVATE_PORT_NUM = 3000;
 PUBLIC_PORT_NUM = 8330;
-PRIVATE_PORT_SPEC = shared_utils.new_port_spec(PRIVATE_PORT_NUM, shared_utils.TCP_PROTOCOL);
-PUBLIC_PORT_SPEC = shared_utils.new_port_spec(PUBLIC_PORT_NUM, shared_utils.TCP_PROTOCOL);
-PORT_PROTOCOL = "http";
-IMAGE = "kurtosistech/near-contract-helper:88585e9";
+PRIVATE_PORT_SPEC = shared_utils.new_port_spec(PRIVATE_PORT_NUM, shared_utils.TCP_PROTOCOL)
+PUBLIC_PORT_SPEC = shared_utils.new_port_spec(PUBLIC_PORT_NUM, shared_utils.TCP_PROTOCOL)
+PORT_PROTOCOL = "http"
+IMAGE = "kurtosistech/near-contract-helper:88585e9"
 
-ACCOUNT_CREATOR_KEY_ENVVAR = "ACCOUNT_CREATOR_KEY";
-INDEXER_DB_CONNECTION_ENVVAR = "INDEXER_DB_CONNECTION";
-NODE_RPC_URL_ENVVAR  = "NODE_URL";
-DYNAMO_DB_URL_ENVVAR = "LOCAL_DYNAMODB_HOST";
-DYNAMO_DB_PORT_ENVVAR = "LOCAL_DYNAMODB_PORT";
+ACCOUNT_CREATOR_KEY_ENVVAR = "ACCOUNT_CREATOR_KEY"
+INDEXER_DB_CONNECTION_ENVVAR = "INDEXER_DB_CONNECTION"
+NODE_RPC_URL_ENVVAR  = "NODE_URL"
+DYNAMO_DB_URL_ENVVAR = "LOCAL_DYNAMODB_HOST"
+DYNAMO_DB_PORT_ENVVAR = "LOCAL_DYNAMODB_PORT"
 
 # See https://github.com/near/near-contract-helper/blob/master/.env.sample for where these are drawn from
 STATIC_ENVVARS = {
-	// ACCOUNT_CREATOR_KEY will be set dynamically 
-
+	#ACCOUNT_CREATOR_KEY will be set dynamically 
 	"MAIL_HOST": "smtp.ethereal.email",
 	"MAIL_PASSWORD": "",
 	"MAIL_PORT": "587",
@@ -62,15 +61,8 @@ STATIC_ENVVARS = {
 
 VALIDATOR_KEY_PRETTY_PRINT_NUM_SPACES = 2;
 
-def new_contract_helper_service_info(private_url, public_url):
-	return struct(
-		private_url = private_url,
-		public_url = public_url
-	)
-
 
 def add_contract_helper_service(
-	enclave_ctx,
 	db_private_url,
 	db_username,
 	db_user_password,
@@ -94,66 +86,56 @@ def add_contract_helper_service(
 
 	env_vars = {
 		ACCOUNT_CREATOR_KEY_ENVVAR: validator_key_str,
-		INDEXER_DB_CONNECTION_ENVVAR: 'postgres://${dbUsername}:${dbUserPassword}@${dbPrivateUrl.ipAddress}:${dbPrivateUrl.portNumber}/${dbName}'
-		NODE_RPC_URL_ENVVAR: near_node_private_rpc_url.toString(),
+		INDEXER_DB_CONNECTION_ENVVAR: 'postgres://${0}:${1}@${2}:${3}/${4}'.format(
+			db_username,
+			db_user_password,
+			db_private_url.ip_address,
+			db_private_url.port_number,
+			db_name
+		),
+		NODE_RPC_URL_ENVVAR: service_url.service_url_to_string(near_node_private_rpc_url),
 		DYNAMO_DB_URL_ENVVAR: dynamo_db_private_url.ip_address,
-		DYNAMO_DB_PORT_ENVVAR: string(dynamo_db_private_url.port_number),
+		DYNAMO_DB_PORT_ENVVAR: str(dynamo_db_private_url.port_number),
 	}
 
 	for key, value in STATIC_ENVVARS.items():
 		env_vars[key] = value
 
 	config = struct(
-		image = IMAGE
+		image = IMAGE,
+		ports = used_ports,
+		public_ports = public_ports,
+		cmd = [
+			"sh",
+			"-c",
+			# We need to override the CMD because the Dockerfile (https://github.com/near/near-contract-helper/blob/master/Dockerfile.app)
+			# loads hardcoded environment variables that we don't want
+			"sleep 10 && node scripts/create-dynamodb-tables.js && yarn start-no-env",
+		],
+		env_vars = env_vars
 	)
 
+	add_service_result = add_service(SERVICE_ID, config)
 
-	const containerConfig: ContainerConfig = new ContainerConfigBuilder(
-		IMAGE,
-	).withUsedPorts(
-		usedPorts
-	).withPublicPorts(
-		publicPorts,
-	).withCmdOverride([
-		"sh",
-		"-c",
-		// We need to override the CMD because the Dockerfile (https://github.com/near/near-contract-helper/blob/master/Dockerfile.app)
-		// loads hardcoded environment variables that we don't want
-		"sleep 10 && node scripts/create-dynamodb-tables.js && yarn start-no-env",
-	]).withEnvironmentVariableOverrides(
-		envvars
-	).build();
-	
-	const addServiceResult: Result<ServiceContext, Error> = await enclaveCtx.addService(SERVICE_ID, containerConfig);
-	if (addServiceResult.isErr()) {
-		return err(addServiceResult.error);
-	}
-	const serviceCtx: ServiceContext = addServiceResult.value;
+	# TODO add productized wait for port vailability
+	# also missing on old repo
 
-	const waitForPortAvailabilityResult = await waitForPortAvailability(
-		PRIVATE_PORT_NUM,
-		serviceCtx.getPrivateIPAddress(),
-		MILLIS_BETWEEN_PORT_AVAILABILITY_RETRIES,
-		PORT_AVAILABILITY_TIMEOUT_MILLIS,
-	)
-	if (waitForPortAvailabilityResult.isErr()) {
-		return err(waitForPortAvailabilityResult.error);
-	}
-
-	const getUrlsResult = getPrivateAndPublicUrlsForPortId(
-		serviceCtx,
+	private_url, public_url = service_url.get_private_and_public_url_for_port_id(
+		SERVICE_ID,
+		add_service_result,
+		config,
 		PORT_ID,
 		PORT_PROTOCOL,
-		"",
-	);
-	if (getUrlsResult.isErr()) {
-		return err(getUrlsResult.error);
-	}
-	const [privateUrl, publicUrl] = getUrlsResult.value;
+		""
+	)
 
-	const result: ContractHelperServiceInfo = new ContractHelperServiceInfo(
-		privateUrl,
-		publicUrl,
-	);
+	return new_contract_helper_service_info(private_url, public_url)
 
-	return ok(result);
+
+def new_contract_helper_service_info(private_url, public_url):
+	return struct(
+		private_url = private_url,
+		public_url = public_url
+	)
+
+
