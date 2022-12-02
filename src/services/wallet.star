@@ -63,7 +63,11 @@ def add_wallet(
 		EXPLORER_URL_JS_VAR: service_url.service_url_to_string_with_override(explorer_public_url, user_requested_backend_ip_address),
 	}
 
+	for key, value in STATIC_JS_VARS.items():
+		js_vars[key] = value
+
 	commands_to_run = generate_js_src_updating_commands(js_vars)
+	commands_to_run.append(ORIGINAL_WALLET_ENTRYPOINT_COMMAND)
 
 	single_command_to_run = " && ".join(commands_to_run)
 
