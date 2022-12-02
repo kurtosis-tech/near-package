@@ -9,6 +9,7 @@
 - Added contract_helper_postgresql
 - Added contract_helper_dynamodb
 - Added indexer
+- Added everything else
 
 # 0.0.0
 - Initial commit
