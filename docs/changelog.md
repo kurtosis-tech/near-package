@@ -3,7 +3,7 @@
 ### Fixes
 - Did some intial work to cleanup
 
-### Changes
+### Features
 - Added static files
 - Added package_io
 
