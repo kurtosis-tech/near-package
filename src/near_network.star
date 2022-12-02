@@ -4,6 +4,7 @@ contract_helper_postgresql = import_module("github.com/kurtosis-tech/near-packag
 contract_helper_dynamodb = import_module("github.com/kurtosis-tech/near-package/src/services/contract_helper_dynamodb.star")
 indexer = import_module("github.com/kurtosis-tech/near-package/src/services/indexer.star")
 contract_helper = import_module("github.com/kurtosis-tech/near-package/src/services/contract_helper.star")
+explorer_backend = import_module("github.com/kurtosis-tech/near-package/src/services/explorer_backend.star")
 
 def launch_near_network(backend_ip_address):
 	print("Launching contract helper postgresql")
@@ -34,3 +35,15 @@ def launch_near_network(backend_ip_address):
 		indexer_info.validator_key,
 	)
 	print("Contract helper launchded with " + str(contract_helper_service_info))
+
+	print("Launching explorer backend")
+	explorer_backend_info = explorer_backend.add_explorer_backend_service(
+		indexer_info.private_rpc_url,
+		contract_helper_db_info.private_url,
+		contract_helper_db_info.db_username,
+		contract_helper_db_info.db_user_password,
+		contract_helper_db_info.indexer_db,
+		contract_helper_db_info.analytics_db,
+		contract_helper_db_info.telemetry_db,
+	)
+	print("Explorer backend launchded with " + str(explorer_backend_info))
