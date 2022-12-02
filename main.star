@@ -5,7 +5,7 @@ output_creator = import_module("github.com/kurtosis-tech/eth2-package/src/packag
 
 
 def run(args):
-	input_args_with_defaults - input_parser.parse_input(args)
+	input_args_with_defaults = input_parser.parse_input(args)
 	print("Starting the " + PACKAGE_NAME + " with input " + input_args_with_defaults)
 
 
