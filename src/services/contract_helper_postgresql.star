@@ -10,7 +10,7 @@ PORT_ID = "postgres";
 PORT_PROTOCOL = "postgres"
 IMAGE = "postgres:13.4-alpine3.14";
 PORT_NUM  = 5432;
-PORT_SPEC = shared_utils.new_port_spec(PORT_NUM, shared_utils.TCP);
+PORT_SPEC = shared_utils.new_port_spec(PORT_NUM, shared_utils.TCP_PROTOCOL);
 
 POSTGRES_USER = "near";
 POSTGRES_PASSWORD = "near";
@@ -24,13 +24,13 @@ INDEXER_DB = "indexer";
 ANALYTICS_DB  = "analytics";
 TELEMETRY_DB = "telemetry";
 
-DBS_TO_INITIALIZE = {
+DBS_TO_INITIALIZE = [
     INDEXER_DB,
     ANALYTICS_DB,
     TELEMETRY_DB,
-}
+]
 
-TIME_TO_SLEEP_FOR_AVAILABILITY = 10
+TIME_TO_SLEEP_FOR_AVAILABILITY = ["sleep", "10"]
 AVAILABILITY_CMD  = [
     "psql",
     "-U",
@@ -41,13 +41,13 @@ AVAILABILITY_CMD  = [
 
 
 def add_contract_helper_db():
-    print("Adding contract helper Posgresql DB running on port '" + PORT_NUM + "'")
+    print("Adding contract helper Posgresql DB running on port '" + str(PORT_NUM) + "'")
     ports = {
         PORT_ID: PORT_SPEC
     }
 
     config = struct(
-        image = image,
+        image = IMAGE,
         env_vars = STATIC_ENVVARS,
         ports = ports
     )

@@ -17,7 +17,7 @@ def get_private_and_public_url_for_port_id(
 
 	public_url  = None
 
-	if "public_ports" in service_config:
+	if not hasattr(service_config, "public_ports"):
 		return private_url, public_url
 
 	public_ports = service_config["public_ports"]
