@@ -106,7 +106,7 @@ def generate_js_src_updating_commands(js_vars):
 		if JS_REPLACEMENT_SED_DELIMITER in value:
 			fail("the value {0} contains {1}, this isn't valid", value, JS_REPLACEMENT_SED_DELIMITER)
 
-		verify_envvar_existence_command = "{0} {1}".format(verify_envvar_exitence_func_name, key)
+		verify_envvar_existence_command = '{0} "{1}"'.format(verify_envvar_exitence_func_name, key)
 		command_fragments.append(verify_envvar_existence_command)
 
 		src_regex = "([,{])"+key+":[^,]*([,}])"
