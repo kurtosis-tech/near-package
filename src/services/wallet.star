@@ -94,7 +94,7 @@ def add_wallet(
 
 def generate_js_src_updating_commands(js_vars):
 	verify_envvar_exitence_func_name = "verify_envvar_existence"
-	declare_envvar_existence_func_str = verify_envvar_exitence_func_name+' () { if ! grep "$\\{1\\}" ' + WALLET_JS_FILE_GLOB + '; then echo "Wallet source JS file is missing expected environment variable \'$\\{1\\}\'"; return 1; fi; }'
+	declare_envvar_existence_func_str = verify_envvar_exitence_func_name+' () { if ! grep "${1}" ' + WALLET_JS_FILE_GLOB + '; then echo "Wallet source JS file is missing expected environment variable \'${1}\'"; return 1; fi; }'
 	command_fragments = [declare_envvar_existence_func_str]
 	for key, value in js_vars.items():
 		if JS_REPLACEMENT_SED_DELIMITER in key:
