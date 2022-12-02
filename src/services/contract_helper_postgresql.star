@@ -92,7 +92,7 @@ def new_contract_helper_db_info(
         db_user_password,
         indexer_db,
         analytics_db,
-        telemtry_db,
+        telemetry_db,
     ):
     return struct (
         private_url = private_url,
@@ -100,6 +100,6 @@ def new_contract_helper_db_info(
         db_user_password = db_user_password,
         indexer_db = indexer_db,
         analytics_db = analytics_db,
-        telemtry_db = telemtry_db
+        telemetry_db = telemetry_db
     )
 

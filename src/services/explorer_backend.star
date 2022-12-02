@@ -3,7 +3,7 @@ constants = import_module("github.com/kurtosis-tech/near-package/src/constants.s
 service_url = import_module("github.com/kurtosis-tech/near-package/src/service_url.star")
 
 # Explorer Backend
-SERVICE_ID: ServiceID = "explorer-backend"
+SERVICE_ID = "explorer-backend"
 IMAGE = "kurtosistech/near-explorer_backend:836d8d7"
 PORT_ID = "http"
 PORT_APP_PROTOCOL = "http"
@@ -60,10 +60,14 @@ def add_explorer_backend_service(
         PORT_ID: PRIVATE_PORT_SPEC
     }
 
+    public_ports = {
+        PORT_ID: PUBLIC_PORT_SPEC
+    }
+
     env_vars = {
         # TODO MAKE THIS MATCH BACKEND
         # [NETWORK_NAME_ENVVAR, networkName],
-        PORT_ENVVAR: string(PRIVATE_PORT_NUM),
+        PORT_ENVVAR: str(PRIVATE_PORT_NUM),
 
         # Indexer DB envvars
         NEAR_READ_ONLY_INDEXER_DATABASE_USERNAME_ENVVAR: indexer_db_username,
@@ -74,21 +78,21 @@ def add_explorer_backend_service(
         # Analytics DB envvars
         NEAR_READ_ONLY_ANALYTICS_DATABASE_USERNAME_ENVVAR: indexer_db_username,
         NEAR_READ_ONLY_ANALYTICS_DATABASE_PASSWORD_ENVVAR: indexer_db_user_password,
-        NEAR_READ_ONLY_ANALYTICS_DATABASE_HOST_ENVVAR: indexer_db_private_url.ipAddress,
+        NEAR_READ_ONLY_ANALYTICS_DATABASE_HOST_ENVVAR: indexer_db_private_url.ip_address,
         NEAR_READ_ONLY_ANALYTICS_DATABASE_NAME_ENVVAR: analytics_db_name,
 
         # Telemetry DB envvars
         NEAR_READ_ONLY_TELEMETRY_DATABASE_USERNAME_ENVVAR: indexer_db_username,
         NEAR_READ_ONLY_TELEMETRY_DATABASE_PASSWORD_ENVVAR: indexer_db_user_password,
-        NEAR_READ_ONLY_TELEMETRY_DATABASE_HOST_ENVVAR: indexer_db_private_url.ipAddress,
+        NEAR_READ_ONLY_TELEMETRY_DATABASE_HOST_ENVVAR: indexer_db_private_url.ip_address,
         NEAR_READ_ONLY_TELEMETRY_DATABASE_NAME_ENVVAR: telemetry_db_name,
         NEAR_WRITE_ONLY_TELEMETRY_DATABASE_USERNAME_ENVVAR: indexer_db_username,
         NEAR_WRITE_ONLY_TELEMETRY_DATABASE_PASSWORD_ENVVAR: indexer_db_user_password,
-        NEAR_WRITE_ONLY_TELEMETRY_DATABASE_HOST_ENVVAR: indexer_db_private_url.ipAddress,
+        NEAR_WRITE_ONLY_TELEMETRY_DATABASE_HOST_ENVVAR: indexer_db_private_url.ip_address,
         NEAR_WRITE_ONLY_TELEMETRY_DATABASE_NAME_ENVVAR: telemetry_db_name,
 
 
-        ["NEAR_EXPLORER_CONFIG__ARCHIVAL_RPC_URL", service_url.service_url_to_string(nearNodePrivateRpcUrl)],
+        "NEAR_EXPLORER_CONFIG__ARCHIVAL_RPC_URL": service_url.service_url_to_string(near_node_private_rpc_url)
     }
 
     config = struct(
