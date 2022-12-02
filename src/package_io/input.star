@@ -7,8 +7,8 @@ def parse_input(input_args):
 	if not hasattr(input_args, "backend_ip_address"):
 		return default_args
 
-	if type(input_args.backend_ip_address) != str:
-		fail("backend_ip_address has to be of type string")
+	if type(input_args.backend_ip_address) != "string":
+		fail("backend_ip_address has to be of type string got {0}".format(type(input_args.backend_ip_address)))
 
 	if input_args.backend_ip_address.strip() == "":
 		fail("backend_ip_address cannot be empty")
