@@ -78,8 +78,9 @@ def add_indexer(db_private_url, db_username, db_password, db_name):
 	# TODO add code to get output from the command below
 	exec(SERVICE_ID, GET_VALIDATOR_KEY_CMD)
 
-	# TODO Add code to parse the validator key object
-	validator_key = {"foo": "bar"}
+	# TODO Replace this with solution that reads this from exec instead
+	validator_key_json = read_file(LOCALNET_CONFIG_DIRPATH_ON_PACKAGE + "/validator_key.json")
+	validator_key = json.decode(validator_key_json)
 
 	private_rpc_url, public_rpc_url = service_url.get_private_and_public_url_for_port_id(
 		SERVICE_ID,
