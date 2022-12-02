@@ -5,6 +5,7 @@ contract_helper_dynamodb = import_module("github.com/kurtosis-tech/near-package/
 indexer = import_module("github.com/kurtosis-tech/near-package/src/services/indexer.star")
 contract_helper = import_module("github.com/kurtosis-tech/near-package/src/services/contract_helper.star")
 explorer_backend = import_module("github.com/kurtosis-tech/near-package/src/services/explorer_backend.star")
+explorer_frontend = import_module("github.com/kurtosis-tech/near-package/src/services/explorer_frontend.star")
 
 def launch_near_network(backend_ip_address):
 	print("Launching contract helper postgresql")
@@ -47,3 +48,11 @@ def launch_near_network(backend_ip_address):
 		contract_helper_db_info.telemetry_db,
 	)
 	print("Explorer backend launchded with " + str(explorer_backend_info))
+
+	print("Launching explorer frontend")
+	explorer_frontend_info = explorer_frontend.add_explorer_frontend_service(
+		backend_ip_address,
+		explorer_backend_info.private_url,
+		explorer_backend_info.public_url,
+	)
+	print("Explorer frontend launchded with " + str(explorer_frontend_info))
