@@ -28,7 +28,6 @@ GET_VALIDATOR_KEY_CMD = [
 ]
 
 TIME_TO_SLEEP_FOR_VALIDATOR_KEYS = ["sleep", "10"]
-SECONDS_TO_SLEEP_FOR_PORT_AVAILABILITY = 10
 
 
 def add_indexer(db_private_url, db_username, db_password, db_name):
