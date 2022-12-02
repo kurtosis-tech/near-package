@@ -1,7 +1,7 @@
 PACKAGE_NAME = "near-package"
 
-input_parser = import_module("github.com/kurtosis-tech/eth2-package/src/package_io/input.star")
-output_creator = import_module("github.com/kurtosis-tech/eth2-package/src/package_io/output.star")
+input_parser = import_module("github.com/kurtosis-tech/near-package/src/package_io/input.star")
+output_creator = import_module("github.com/kurtosis-tech/near-package/src/package_io/output.star")
 
 
 def run(args):
