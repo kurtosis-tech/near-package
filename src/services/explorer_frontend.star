@@ -71,18 +71,18 @@ def add_explorer_frontend_service(
 		"NEAR_EXPLORER_CONFIG__NETWORK_NAME": "localnet",
 		"NEAR_EXPLORER_CONFIG__NETWORKS": networks_config_json,
 
-		"PORT": string(PRIVATE_PORT_NUM),
+		"PORT": str(PRIVATE_PORT_NUM),
 
 		"NEAR_EXPLORER_CONFIG__BACKEND_SSR__HOSTS__MAINNET": backend_private_ip,
 		"NEAR_EXPLORER_CONFIG__BACKEND_SSR__HOSTS__TESTNET": backend_private_ip,
 		"NEAR_EXPLORER_CONFIG__BACKEND_SSR__HOSTS__GUILDNET": backend_private_ip,
-		"NEAR_EXPLORER_CONFIG__BACKEND_SSR__PORT": string(explorer_backend_private_url.port_number),
+		"NEAR_EXPLORER_CONFIG__BACKEND_SSR__PORT": str(explorer_backend_private_url.port_number),
 		"NEAR_EXPLORER_CONFIG__BACKEND_SSR__SECURE": "false",
 
 		"NEAR_EXPLORER_CONFIG__BACKEND__HOSTS__MAINNET": user_requested_backend_ip_address,
 		"NEAR_EXPLORER_CONFIG__BACKEND__HOSTS__TESTNET": user_requested_backend_ip_address,
 		"NEAR_EXPLORER_CONFIG__BACKEND__HOSTS__GUILDNET": user_requested_backend_ip_address,
-		"NEAR_EXPLORER_CONFIG__BACKEND__PORT": string(explorer_backend_private_url.port_number),
+		"NEAR_EXPLORER_CONFIG__BACKEND__PORT": str(explorer_backend_private_url.port_number),
 		"NEAR_EXPLORER_CONFIG__BACKEND__SECURE": "false",
 	}
 
