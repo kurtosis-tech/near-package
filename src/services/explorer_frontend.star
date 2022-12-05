@@ -108,7 +108,7 @@ def add_explorer_frontend_service(
 		config,
 		PORT_ID,
 		PORT_PROTOCOL,
-		ROOT_PATH = ""
+		ROOT_PATH
 	)
 
 	return new_explorer_frontend_info(public_url)

@@ -88,7 +88,7 @@ def add_indexer(db_private_url, db_username, db_password, db_name):
 		config,
 		RPC_PORT_ID,
 		RPC_PORT_PROTOCOL,
-		ROOT_PATH = ""
+		ROOT_PATH
 	)
 
 	result = new_indexer_info(private_rpc_url, public_rpc_url, validator_key)
