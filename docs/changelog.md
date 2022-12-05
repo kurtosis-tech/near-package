@@ -9,6 +9,7 @@
 - Added contract_helper_postgresql
 - Added contract_helper_dynamodb
 - Added indexer
+- Added wallet, frontend explorer, backend explorer
 
 # 0.0.0
 - Initial commit

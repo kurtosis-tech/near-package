@@ -3,24 +3,25 @@ constants = import_module("github.com/kurtosis-tech/near-package/src/constants.s
 service_url = import_module("github.com/kurtosis-tech/near-package/src/service_url.star")
 
 
-SERVICE_ID = "contract-helper-db";
-PORT_ID = "postgres";
+SERVICE_ID = "contract-helper-db"
+PORT_ID = "postgres"
 PORT_PROTOCOL = "postgres"
-IMAGE = "postgres:13.4-alpine3.14";
-PORT_NUM  = 5432;
-PORT_SPEC = shared_utils.new_port_spec(PORT_NUM, shared_utils.TCP_PROTOCOL);
+IMAGE = "postgres:13.4-alpine3.14"
+PORT_NUM  = 5432
+PORT_SPEC = shared_utils.new_port_spec(PORT_NUM, shared_utils.TCP_PROTOCOL)
+ROOT_PATH = ""
 
-POSTGRES_USER = "near";
-POSTGRES_PASSWORD = "near";
+POSTGRES_USER = "near"
+POSTGRES_PASSWORD = "near"
 STATIC_ENVVARS = {
     "POSTGRES_USER": POSTGRES_USER,
     "POSTGRES_PASSWORD": POSTGRES_PASSWORD,
 }
 
 
-INDEXER_DB = "indexer";
-ANALYTICS_DB  = "analytics";
-TELEMETRY_DB = "telemetry";
+INDEXER_DB = "indexer"
+ANALYTICS_DB  = "analytics"
+TELEMETRY_DB = "telemetry"
 
 DBS_TO_INITIALIZE = [
     INDEXER_DB,
@@ -72,7 +73,7 @@ def add_contract_helper_db():
             config,
             PORT_ID,
             PORT_PROTOCOL,
-            ""
+            ROOT_PATH
         )
 
     return new_contract_helper_db_info(
@@ -89,17 +90,17 @@ def add_contract_helper_db():
 def new_contract_helper_db_info(
         private_url,
         db_username,
-        db_password,
+        db_user_password,
         indexer_db,
         analytics_db,
-        telemtry_db,
+        telemetry_db,
     ):
     return struct (
         private_url = private_url,
         db_username = db_username,
-        db_password = db_password,
+        db_user_password = db_user_password,
         indexer_db = indexer_db,
         analytics_db = analytics_db,
-        telemtry_db = telemtry_db
+        telemetry_db = telemetry_db
     )
 
