@@ -91,7 +91,6 @@ def add_explorer_backend_service(
         NEAR_WRITE_ONLY_TELEMETRY_DATABASE_HOST_ENVVAR: indexer_db_private_url.ip_address,
         NEAR_WRITE_ONLY_TELEMETRY_DATABASE_NAME_ENVVAR: telemetry_db_name,
 
-
         "NEAR_EXPLORER_CONFIG__ARCHIVAL_RPC_URL": service_url.service_url_to_string(near_node_private_rpc_url)
     }
 

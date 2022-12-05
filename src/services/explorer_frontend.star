@@ -101,7 +101,6 @@ def add_explorer_frontend_service(
 	# TODO add a productized way to wait for port availability
 	# Note this is broken on the old module as well
 
-
 	private_url, public_url = service_url.get_private_and_public_url_for_port_id(
 		SERVICE_ID,
 		add_service_result,
