@@ -2,6 +2,7 @@
 
 ### Fixes
 - Did some intial work to cleanup
+- Made the readme better
 
 ### Features
 - Added static files
@@ -10,6 +11,8 @@
 - Added contract_helper_dynamodb
 - Added indexer
 - Added wallet, frontend explorer, backend explorer
+- Added historical notes
+- Added launch-local-near-cluster.sh script
 
 # 0.0.0
 - Initial commit
