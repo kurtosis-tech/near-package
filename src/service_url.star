@@ -1,4 +1,6 @@
-PUBLIC_IP_ADDRESS = "0.0.0.0"
+# TODO replace this with a productized solution
+# that allows you to do get public ip address
+PUBLIC_IP_ADDRESS = "127.0.0.1"
 
 def get_private_and_public_url_for_port_id(
 	service_id,
