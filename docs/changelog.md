@@ -3,7 +3,7 @@
 ### Fixes
 - Did some intial work to cleanup
 - Made the readme better
-- Fix CHANGELOG docs
+- Fix pre-release-script
 
 ### Features
 - Added static files
