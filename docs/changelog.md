@@ -1,5 +1,7 @@
 # TBD
 
+# 0.0.1
+
 ### Fixes
 - Did some intial work to cleanup
 - Made the readme better
