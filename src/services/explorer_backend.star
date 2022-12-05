@@ -13,7 +13,7 @@ PRIVATE_PORT_SPEC = shared_utils.new_port_spec(PRIVATE_PORT_NUM, shared_utils.TC
 PUBLIC_PORT_SPEC = shared_utils.new_port_spec(PUBLIC_PORT_NUM, shared_utils.TCP_PROTOCOL)
 URL_PATH = ""
 
-NEAR_NODE_RPC_URL_ENVVAR = "NEAR_RPC_URL";
+NEAR_NODE_RPC_URL_ENVVAR = "NEAR_RPC_URL"
 PORT_ENVVAR = "NEAR_EXPLORER_CONFIG__PORT"
 
 # These environment variables come from https://github.com/near/near-explorer/blob/master/backend/src/config.ts
@@ -90,7 +90,6 @@ def add_explorer_backend_service(
         NEAR_WRITE_ONLY_TELEMETRY_DATABASE_PASSWORD_ENVVAR: indexer_db_user_password,
         NEAR_WRITE_ONLY_TELEMETRY_DATABASE_HOST_ENVVAR: indexer_db_private_url.ip_address,
         NEAR_WRITE_ONLY_TELEMETRY_DATABASE_NAME_ENVVAR: telemetry_db_name,
-
 
         "NEAR_EXPLORER_CONFIG__ARCHIVAL_RPC_URL": service_url.service_url_to_string(near_node_private_rpc_url)
     }

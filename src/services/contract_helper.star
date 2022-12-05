@@ -4,9 +4,9 @@ service_url = import_module("github.com/kurtosis-tech/near-package/src/service_u
 
 
 SERVICE_ID = "contract-helper-service"
-PORT_ID = "rest";
-PRIVATE_PORT_NUM = 3000;
-PUBLIC_PORT_NUM = 8330;
+PORT_ID = "rest"
+PRIVATE_PORT_NUM = 3000
+PUBLIC_PORT_NUM = 8330
 PRIVATE_PORT_SPEC = shared_utils.new_port_spec(PRIVATE_PORT_NUM, shared_utils.TCP_PROTOCOL)
 PUBLIC_PORT_SPEC = shared_utils.new_port_spec(PUBLIC_PORT_NUM, shared_utils.TCP_PROTOCOL)
 PORT_PROTOCOL = "http"
@@ -17,6 +17,7 @@ INDEXER_DB_CONNECTION_ENVVAR = "INDEXER_DB_CONNECTION"
 NODE_RPC_URL_ENVVAR  = "NODE_URL"
 DYNAMO_DB_URL_ENVVAR = "LOCAL_DYNAMODB_HOST"
 DYNAMO_DB_PORT_ENVVAR = "LOCAL_DYNAMODB_PORT"
+ROOT_PATH = ""
 
 # See https://github.com/near/near-contract-helper/blob/master/.env.sample for where these are drawn from
 STATIC_ENVVARS = {
@@ -59,7 +60,7 @@ STATIC_ENVVARS = {
 	"AWS_SECRET_ACCESS_KEY": "NOT_USED_BUT_NEEDED",
 }
 
-VALIDATOR_KEY_PRETTY_PRINT_NUM_SPACES = 2;
+VALIDATOR_KEY_PRETTY_PRINT_NUM_SPACES = 2
 
 
 def add_contract_helper_service(
@@ -126,7 +127,7 @@ def add_contract_helper_service(
 		config,
 		PORT_ID,
 		PORT_PROTOCOL,
-		""
+		ROOT_PATH
 	)
 
 	return new_contract_helper_service_info(private_url, public_url)
