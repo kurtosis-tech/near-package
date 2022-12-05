@@ -16,7 +16,7 @@ EXPLORER_URL_PROPERTY="explorer_url"
 WALLET_URL_PROPERTY="wallet_url"
 ALIAS_NAME="local_near"
 NEAR_KURTOSIS_DIRPATH="${HOME}/.neartosis"
-NEAR_KURTOSIS_PACKAGE="."
+NEAR_KURTOSIS_PACKAGE="github.com/kurtosis-tech/near-package"
 KURTOSIS_CMD="kurtosis"
 ENCLAVE_ID="near"
 

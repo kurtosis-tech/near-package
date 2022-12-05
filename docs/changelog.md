@@ -12,6 +12,7 @@
 - Added indexer
 - Added wallet, frontend explorer, backend explorer
 - Added historical notes
+- Added launch-local-near-cluster.sh script
 
 # 0.0.0
 - Initial commit
