@@ -3,25 +3,26 @@ constants = import_module("github.com/kurtosis-tech/near-package/src/constants.s
 service_url = import_module("github.com/kurtosis-tech/near-package/src/service_url.star")
 
 SERVICE_ID = "indexer-node"
-IMAGE = "kurtosistech/near-indexer-for-explorer:2d66461";
-RPC_PRIVATE_PORT_NUM = 3030;
-RPC_PUBLIC_PORT_NUM = 8332;
+IMAGE = "kurtosistech/near-indexer-for-explorer:2d66461"
+RPC_PRIVATE_PORT_NUM = 3030
+RPC_PUBLIC_PORT_NUM = 8332
 RPC_PORT_ID = "rpc"
-RPC_PRIVATE_PORT_SPEC = shared_utils.new_port_spec(RPC_PRIVATE_PORT_NUM, shared_utils.TCP_PROTOCOL);
-RPC_PUBLIC_PORT_SPEC = shared_utils.new_port_spec(RPC_PUBLIC_PORT_NUM, shared_utils.TCP_PROTOCOL);
+RPC_PRIVATE_PORT_SPEC = shared_utils.new_port_spec(RPC_PRIVATE_PORT_NUM, shared_utils.TCP_PROTOCOL)
+RPC_PUBLIC_PORT_SPEC = shared_utils.new_port_spec(RPC_PUBLIC_PORT_NUM, shared_utils.TCP_PROTOCOL)
 RPC_PORT_PROTOCOL = "http"
 GOSSIP_PRIVATE_PORT_NUM = 24567
 GOSSIP_PUBLIC_PORT_NUM = 8333
 GOSSIP_PORT_ID = "gossip"
-GOSSIP_PRIVATE_PORT_SPEC = shared_utils.new_port_spec(GOSSIP_PRIVATE_PORT_NUM, shared_utils.TCP_PROTOCOL);
-GOSSIP_PUBLIC_PORT_SPEC = shared_utils.new_port_spec(GOSSIP_PUBLIC_PORT_NUM, shared_utils.TCP_PROTOCOL);
+GOSSIP_PRIVATE_PORT_SPEC = shared_utils.new_port_spec(GOSSIP_PRIVATE_PORT_NUM, shared_utils.TCP_PROTOCOL)
+GOSSIP_PUBLIC_PORT_SPEC = shared_utils.new_port_spec(GOSSIP_PUBLIC_PORT_NUM, shared_utils.TCP_PROTOCOL)
+ROOT_PATH = ""
 
 LOCALNET_CONFIG_DIRPATH_ON_PACKAGE = "github.com/kurtosis-tech/near-package/static_files/near-configs/localnet"
 NEAR_CONFIGS_DIRPATH_ON_INDEXER_CONTAINER = "/root/.near"
 
-DATABASE_URL_ENVVAR = "DATABASE_URL";
+DATABASE_URL_ENVVAR = "DATABASE_URL"
 
-VALIDATOR_KEY_FILEPATH = "/root/.near/validator_key.json";
+VALIDATOR_KEY_FILEPATH = "/root/.near/validator_key.json"
 GET_VALIDATOR_KEY_CMD = [
     "cat",
     VALIDATOR_KEY_FILEPATH
@@ -87,7 +88,7 @@ def add_indexer(db_private_url, db_username, db_password, db_name):
 		config,
 		RPC_PORT_ID,
 		RPC_PORT_PROTOCOL,
-		""
+		ROOT_PATH = ""
 	)
 
 	result = new_indexer_info(private_rpc_url, public_rpc_url, validator_key)

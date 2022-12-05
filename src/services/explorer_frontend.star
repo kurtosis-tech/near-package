@@ -12,6 +12,7 @@ PRIVATE_PORT_NUM = 3000
 PUBLIC_PORT_NUM = 8331
 PRIVATE_PORT_SPEC = shared_utils.new_port_spec(PRIVATE_PORT_NUM, shared_utils.TCP_PROTOCOL)
 PUBLIC_PORT_SPEC = shared_utils.new_port_spec(PUBLIC_PORT_NUM, shared_utils.TCP_PROTOCOL)
+ROOT_PATH = ""
 
 
 def add_explorer_frontend_service(
@@ -107,7 +108,7 @@ def add_explorer_frontend_service(
 		config,
 		PORT_ID,
 		PORT_PROTOCOL,
-		""
+		ROOT_PATH = ""
 	)
 
 	return new_explorer_frontend_info(public_url)

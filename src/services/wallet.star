@@ -16,6 +16,7 @@ PRIVATE_PORT_NUM = 3004
 PUBLIC_PORT_NUM = 8334
 PRIVATE_PORT_SPEC = shared_utils.new_port_spec(PRIVATE_PORT_NUM, shared_utils.TCP_PROTOCOL)
 PUBLIC_PORT_SPEC = shared_utils.new_port_spec(PUBLIC_PORT_NUM, shared_utils.TCP_PROTOCOL)
+ROOT_PATH = ""
 
 # These variable names come from https://github.com/near/near-wallet/blob/master/packages/frontend/src/config.js
 CONTRACT_HELPER_JS_VAR = "ACCOUNT_HELPER_URL"
@@ -31,11 +32,11 @@ STATIC_JS_VARS = {
 
 # The glob that identifies the Parcel-bundled JS file containing the Wallet code, which we'll
 #  modify to insert the environment variables we want
-WALLET_JS_FILE_GLOB = "/var/www/html/wallet/src*js";
+WALLET_JS_FILE_GLOB = "/var/www/html/wallet/src*js"
 
 # From the Wallet Dockerfile
 # We override this so that we can insert our desired envvars into the Wallet's source Javascript file
-ORIGINAL_WALLET_ENTRYPOINT_COMMAND = "/sbin/my_init --";
+ORIGINAL_WALLET_ENTRYPOINT_COMMAND = "/sbin/my_init --"
 
 # sed delimiter that we'll use when sed-ing the Wallet JS file, and which the JS variables cannot contain
 JS_REPLACEMENT_SED_DELIMITER = "$"
@@ -90,7 +91,7 @@ def add_wallet(
 		config,
 		PORT_ID,
 		PORT_PROTOCOL,
-		""
+		ROOT_PATH
 	)
 
 	return new_wallet_info(public_url)
