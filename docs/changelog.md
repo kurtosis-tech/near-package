@@ -1,5 +1,8 @@
 # TBD
 
+### Breaking Change
+- Updated struct to PortSpec to define ports
+
 # 0.0.1
 
 ### Fixes
