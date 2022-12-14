@@ -73,12 +73,6 @@ def add_indexer(db_private_url, db_username, db_password, db_name):
 
 	add_service_result = add_service(SERVICE_ID, config)
 
-	# TODO Replace this with an exec that takes waits
-	exec(SERVICE_ID, TIME_TO_SLEEP_FOR_VALIDATOR_KEYS)
-	# TODO add code to get output from the command below
-	exec(SERVICE_ID, GET_VALIDATOR_KEY_CMD)
-
-	# TODO Replace this with solution that reads this from exec instead
 	validator_key_json = read_file(LOCALNET_CONFIG_DIRPATH_ON_PACKAGE + "/validator_key.json")
 	validator_key = json.decode(validator_key_json)
 
