@@ -14,7 +14,7 @@ PRIVATE_PORT_NUM = 3004
 # a link to the Wallet using that static public port before the Wallet has started (and the Wallet will be
 # started afterwards). This is why we expose this constant.
 PUBLIC_PORT_NUM = 8334
-PRIVATE_PORT_SPEC = shared_utils.new_port_spec(PRIVATE_PORT_NUM, shared_utils.TCP_PROTOCOL)
+PRIVATE_PORT_SPEC = shared_utils.new_port_spec(PRIVATE_PORT_NUM, shared_utils.TCP_PROTOCOL, shared_utils.HTTP_APPLICATION_PROTOCOL)
 PUBLIC_PORT_SPEC = shared_utils.new_port_spec(PUBLIC_PORT_NUM, shared_utils.TCP_PROTOCOL)
 ROOT_PATH = ""
 

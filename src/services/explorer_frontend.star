@@ -10,7 +10,7 @@ PORT_PROTOCOL = "http"
 IMAGE= "kurtosistech/near-explorer_frontend:836d8d7"
 PRIVATE_PORT_NUM = 3000
 PUBLIC_PORT_NUM = 8331
-PRIVATE_PORT_SPEC = shared_utils.new_port_spec(PRIVATE_PORT_NUM, shared_utils.TCP_PROTOCOL)
+PRIVATE_PORT_SPEC = shared_utils.new_port_spec(PRIVATE_PORT_NUM, shared_utils.TCP_PROTOCOL, shared_utils.HTTP_APPLICATION_PROTOCOL)
 PUBLIC_PORT_SPEC = shared_utils.new_port_spec(PUBLIC_PORT_NUM, shared_utils.TCP_PROTOCOL)
 ROOT_PATH = ""
 
