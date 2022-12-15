@@ -1,5 +1,7 @@
 # TBD
 
+# 0.1.0
+
 ### Breaking Change
 - Updated struct to PortSpec to define ports
 
