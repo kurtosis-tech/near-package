@@ -58,7 +58,7 @@ def add_indexer(db_private_url, db_username, db_password, db_name):
 	command_to_run = './diesel migration run && ./indexer-explorer --home-dir "{0}" run --store-genesis sync-from-latest'.format(NEAR_CONFIGS_DIRPATH_ON_INDEXER_CONTAINER)
 
 	files = {
-		upload_artifact_uuid : NEAR_CONFIGS_DIRPATH_ON_INDEXER_CONTAINER
+		NEAR_CONFIGS_DIRPATH_ON_INDEXER_CONTAINER: upload_artifact_uuid
 	}
 
 	config = struct(
