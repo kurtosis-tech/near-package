@@ -2,6 +2,11 @@
 
 ### Breaking Change
 - Introduced optional application protocol and renamed protocol to transport_protocol
+- Invert the order of keys for files for add_service
+
+### Changes
+- Invert the order of keys for files for add_service
+
 
 # 0.1.0
 
