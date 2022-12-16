@@ -1,5 +1,7 @@
 # TBD
 
+# 0.2.0
+
 ### Breaking Change
 - Introduced optional application protocol and renamed protocol to transport_protocol
 
