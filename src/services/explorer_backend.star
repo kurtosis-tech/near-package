@@ -9,7 +9,7 @@ PORT_ID = "http"
 PORT_APP_PROTOCOL = "http"
 PRIVATE_PORT_NUM = 8080
 PUBLIC_PORT_NUM = 18080
-PRIVATE_PORT_SPEC = shared_utils.new_port_spec(PRIVATE_PORT_NUM, shared_utils.TCP_PROTOCOL)
+PRIVATE_PORT_SPEC = shared_utils.new_port_spec(PRIVATE_PORT_NUM, shared_utils.TCP_PROTOCOL, shared_utils.HTTP_APPLICATION_PROTOCOL)
 PUBLIC_PORT_SPEC = shared_utils.new_port_spec(PUBLIC_PORT_NUM, shared_utils.TCP_PROTOCOL)
 URL_PATH = ""
 
