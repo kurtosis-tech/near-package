@@ -8,6 +8,12 @@
 ### Breaking Change
 - Updated struct to PortSpec to define ports
 
+### Features
+- Use `wait` command to wait for availability of PG
+
+### Changes
+- Change `exec` syntax
+
 # 0.0.1
 
 ### Fixes
