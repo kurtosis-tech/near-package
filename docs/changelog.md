@@ -1,5 +1,7 @@
 # TBD
 
+# 0.2.0
+
 ### Breaking Change
 - Introduced optional application protocol and renamed protocol to transport_protocol
 
@@ -7,6 +9,12 @@
 
 ### Breaking Change
 - Updated struct to PortSpec to define ports
+
+### Features
+- Use `wait` command to wait for availability of PG
+
+### Changes
+- Change `exec` syntax
 
 # 0.0.1
 
