@@ -23,6 +23,7 @@ def launch_near_network(plan, backend_ip_address):
 
 	plan.print("Launching indexer")
 	indexer_info = indexer.add_indexer(
+		plan,
 		contract_helper_db_info.private_url,
 		contract_helper_db_info.db_username,
 		contract_helper_db_info.db_user_password,

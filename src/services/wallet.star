@@ -68,7 +68,7 @@ def add_wallet(
 	for key, value in STATIC_JS_VARS.items():
 		js_vars[key] = value
 
-	commands_to_run = generate_js_src_updating_commands(js_vars)
+	commands_to_run = generate_js_src_updating_commands(plan, js_vars)
 	commands_to_run.append(ORIGINAL_WALLET_ENTRYPOINT_COMMAND)
 
 	single_command_to_run = " && ".join(commands_to_run)
@@ -98,7 +98,7 @@ def add_wallet(
 	return new_wallet_info(public_url)
 
 
-def generate_js_src_updating_commands(js_vars):
+def generate_js_src_updating_commands(plan, js_vars):
 	verify_envvar_exitence_func_name = "verify_envvar_existence"
 	declare_envvar_existence_func_str = verify_envvar_exitence_func_name+' () { if ! grep "${1}" ' + WALLET_JS_FILE_GLOB + '; then echo "Wallet source JS file is missing expected environment variable \'${1}\'"; return 1; fi; }'
 	command_fragments = [declare_envvar_existence_func_str]

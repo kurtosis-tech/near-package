@@ -31,7 +31,7 @@ GET_VALIDATOR_KEY_CMD = [
 TIME_TO_SLEEP_FOR_VALIDATOR_KEYS = ["sleep", "10"]
 
 
-def add_indexer(db_private_url, db_username, db_password, db_name):
+def add_indexer(plan, db_private_url, db_username, db_password, db_name):
 	plan.print("Adding indexer service...")
 	
 	upload_artifact_uuid = plan.upload_files(LOCALNET_CONFIG_DIRPATH_ON_PACKAGE)
