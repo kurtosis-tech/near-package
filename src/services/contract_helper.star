@@ -64,6 +64,7 @@ VALIDATOR_KEY_PRETTY_PRINT_NUM_SPACES = 2
 
 
 def add_contract_helper_service(
+	plan,
 	db_private_url,
 	db_username,
 	db_user_password,
@@ -72,7 +73,7 @@ def add_contract_helper_service(
 	near_node_private_rpc_url,
 	validator_key):
 
-	print("Adding contract helper service running on port '{0}'".format(PRIVATE_PORT_NUM))
+	plan.print("Adding contract helper service running on port '{0}'".format(PRIVATE_PORT_NUM))
 
 	used_ports = {
 		PORT_ID: PRIVATE_PORT_SPEC
@@ -116,7 +117,7 @@ def add_contract_helper_service(
 		env_vars = env_vars
 	)
 
-	add_service_result = add_service(SERVICE_ID, config)
+	add_service_result = plan.add_service(SERVICE_ID, config)
 
 	# TODO add productized wait for port vailability
 	# also missing on old repo

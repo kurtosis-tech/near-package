@@ -16,12 +16,13 @@ ROOT_PATH = ""
 
 
 def add_explorer_frontend_service(
+	plan,
 	user_requested_backend_ip_address,
 	# The IP address to use for connecting to the backend services
 	explorer_backend_private_url,
 	explorer_backend_public_url):
 
-	print("Adding explorer frontend service running on port '{0}'".format(PRIVATE_PORT_NUM))
+	plan.print("Adding explorer frontend service running on port '{0}'".format(PRIVATE_PORT_NUM))
 
 	used_ports = {
 		PORT_ID : PRIVATE_PORT_SPEC
@@ -97,7 +98,7 @@ def add_explorer_frontend_service(
 	)
 
 	
-	add_service_result = add_service(SERVICE_ID, config)
+	add_service_result = plan.add_service(SERVICE_ID, config)
 
 	# TODO add a productized way to wait for port availability
 	# Note this is broken on the old module as well

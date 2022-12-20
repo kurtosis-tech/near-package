@@ -31,10 +31,10 @@ GET_VALIDATOR_KEY_CMD = [
 TIME_TO_SLEEP_FOR_VALIDATOR_KEYS = ["sleep", "10"]
 
 
-def add_indexer(db_private_url, db_username, db_password, db_name):
-	print("Adding indexer service...")
+def add_indexer(plan, db_private_url, db_username, db_password, db_name):
+	plan.print("Adding indexer service...")
 	
-	upload_artifact_uuid = upload_files(LOCALNET_CONFIG_DIRPATH_ON_PACKAGE)
+	upload_artifact_uuid = plan.upload_files(LOCALNET_CONFIG_DIRPATH_ON_PACKAGE)
 	private_ports = {
 		RPC_PORT_ID: RPC_PRIVATE_PORT_SPEC,
 		GOSSIP_PORT_ID: GOSSIP_PRIVATE_PORT_SPEC
@@ -71,7 +71,7 @@ def add_indexer(db_private_url, db_username, db_password, db_name):
 		files = files
 	)
 
-	add_service_result = add_service(SERVICE_ID, config)
+	add_service_result = plan.add_service(SERVICE_ID, config)
 
 	validator_key_json = read_file(LOCALNET_CONFIG_DIRPATH_ON_PACKAGE + "/validator_key.json")
 	validator_key = json.decode(validator_key_json)

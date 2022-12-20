@@ -11,8 +11,8 @@ DEFAULT_PORT_SPEC = shared_utils.new_port_spec(DEFAULT_PORT_NUM, shared_utils.TC
 ROOT_PATH = ""
 
 
-def add_contract_helper_dynamo_db():
-	print("Adding contract helper DynamoDB running on default port '" + str(DEFAULT_PORT_NUM) + "'")
+def add_contract_helper_dynamo_db(plan):
+	plan.print("Adding contract helper DynamoDB running on default port '" + str(DEFAULT_PORT_NUM) + "'")
 	config = struct(
 		image = IMAGE,
 		ports = {
@@ -20,7 +20,7 @@ def add_contract_helper_dynamo_db():
 		}
 	)
 
-	add_service_result = add_service(SERVICE_ID, config)
+	add_service_result = plan.add_service(SERVICE_ID, config)
 
 	private_url, _ = service_url.get_private_and_public_url_for_port_id(
 			SERVICE_ID,

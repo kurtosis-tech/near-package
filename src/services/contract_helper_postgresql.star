@@ -39,8 +39,8 @@ AVAILABILITY_CMD  = [
 ]
 
 
-def add_contract_helper_db():
-    print("Adding contract helper Posgresql DB running on port '" + str(PORT_NUM) + "'")
+def add_contract_helper_db(plan):
+    plan.print("Adding contract helper Posgresql DB running on port '" + str(PORT_NUM) + "'")
     ports = {
         PORT_ID: PORT_SPEC
     }
@@ -51,9 +51,9 @@ def add_contract_helper_db():
         ports = ports
     )
 
-    add_service_result = add_service(SERVICE_ID, config)
+    add_service_result = plan.add_service(SERVICE_ID, config)
 
-    wait(struct(service_id=SERVICE_ID, command=AVAILABILITY_CMD), "code", "==", constants.EXEC_COMMAND_SUCCESS_EXIT_CODE)
+    plan.wait(struct(service_id=SERVICE_ID, command=AVAILABILITY_CMD), "code", "==", constants.EXEC_COMMAND_SUCCESS_EXIT_CODE)
 
     for database_to_create in DBS_TO_INITIALIZE:
         create_db_command  = [
@@ -63,8 +63,8 @@ def add_contract_helper_db():
             "-c",
             "create database " + database_to_create + " with owner=" + POSTGRES_USER
         ]
-        create_db_command_result = exec(struct(service_id=SERVICE_ID, command=create_db_command))
-        assert(create_db_command_result["code"], "==", constants.EXEC_COMMAND_SUCCESS_EXIT_CODE)
+        create_db_command_result = plan.exec(struct(service_id=SERVICE_ID, command=create_db_command))
+        plan.assert(create_db_command_result["code"], "==", constants.EXEC_COMMAND_SUCCESS_EXIT_CODE)
 
     private_url, _ = service_url.get_private_and_public_url_for_port_id(
             SERVICE_ID,
