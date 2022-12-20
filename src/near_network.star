@@ -13,24 +13,24 @@ EXPLORER_WAMP_BACKEND_FRONTEND_SHARED_NETWORK_NAME = "localnet"
 
 
 def launch_near_network(backend_ip_address):
-	print("Launching contract helper postgresql")
+	plan.print("Launching contract helper postgresql")
 	contract_helper_db_info = contract_helper_postgresql.add_contract_helper_db()
-	print("Contract helper postgresql db info {0}".format(contract_helper_db_info))
+	plan.print("Contract helper postgresql db info {0}".format(contract_helper_db_info))
 
-	print("Launching contract helper dynamo db")
+	plan.print("Launching contract helper dynamo db")
 	contract_helper_dynamodb_info = contract_helper_dynamodb.add_contract_helper_dynamo_db()
-	print("Contract helper dynamodb info {0}".format(contract_helper_dynamodb_info))
+	plan.print("Contract helper dynamodb info {0}".format(contract_helper_dynamodb_info))
 
-	print("Launching indexer")
+	plan.print("Launching indexer")
 	indexer_info = indexer.add_indexer(
 		contract_helper_db_info.private_url,
 		contract_helper_db_info.db_username,
 		contract_helper_db_info.db_user_password,
 		contract_helper_db_info.indexer_db
 	)
-	print("Indexer launched with " + str(indexer_info))
+	plan.print("Indexer launched with " + str(indexer_info))
 
-	print("Launching contract helper")
+	plan.print("Launching contract helper")
 	contract_helper_service_info = contract_helper.add_contract_helper_service(
 		contract_helper_db_info.private_url,
 		contract_helper_db_info.db_username,
@@ -40,9 +40,9 @@ def launch_near_network(backend_ip_address):
 		indexer_info.private_rpc_url,
 		indexer_info.validator_key,
 	)
-	print("Contract helper launchded with {0}".format(contract_helper_service_info))
+	plan.print("Contract helper launchded with {0}".format(contract_helper_service_info))
 
-	print("Launching explorer backend")
+	plan.print("Launching explorer backend")
 	explorer_backend_info = explorer_backend.add_explorer_backend_service(
 		indexer_info.private_rpc_url,
 		contract_helper_db_info.private_url,
@@ -52,24 +52,24 @@ def launch_near_network(backend_ip_address):
 		contract_helper_db_info.analytics_db,
 		contract_helper_db_info.telemetry_db,
 	)
-	print("Explorer backend launchded with {0}".format(explorer_backend_info))
+	plan.print("Explorer backend launchded with {0}".format(explorer_backend_info))
 
-	print("Launching explorer frontend")
+	plan.print("Launching explorer frontend")
 	explorer_frontend_info = explorer_frontend.add_explorer_frontend_service(
 		backend_ip_address,
 		explorer_backend_info.private_url,
 		explorer_backend_info.public_url,
 	)
-	print("Explorer frontend launchded with {0}".format(explorer_frontend_info))
+	plan.print("Explorer frontend launchded with {0}".format(explorer_frontend_info))
 
-	print("Launching wallet")
+	plan.print("Launching wallet")
 	wallet_info = wallet.add_wallet(
 		backend_ip_address,
 		indexer_info.public_rpc_url,
 		contract_helper_service_info.public_url,
 		explorer_frontend_info.public_url,
 	)
-	print("Explorer wallet {0}".format(wallet_info))
+	plan.print("Explorer wallet {0}".format(wallet_info))
 
 	return output_creator.create_output(
 		EXPLORER_WAMP_BACKEND_FRONTEND_SHARED_NETWORK_NAME,

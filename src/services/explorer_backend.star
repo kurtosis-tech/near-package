@@ -54,7 +54,7 @@ def add_explorer_backend_service(
     analytics_db_name,
     telemetry_db_name):
 
-    print("Adding explorer backend service")
+    plan.print("Adding explorer backend service")
 
     ports = {
         PORT_ID: PRIVATE_PORT_SPEC
@@ -104,7 +104,7 @@ def add_explorer_backend_service(
         public_ports = public_ports,
     )
 
-    add_service_result = add_service(SERVICE_ID, config)
+    add_service_result = plan.add_service(SERVICE_ID, config)
 
     private_url, public_url = service_url.get_private_and_public_url_for_port_id(
         SERVICE_ID,

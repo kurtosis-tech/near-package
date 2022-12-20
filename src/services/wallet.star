@@ -48,7 +48,7 @@ def add_wallet(
     contract_helper_public_url,
     explorer_public_url):
 	
-	print("Adding wallet service running on port '{0}".format(PRIVATE_PORT_NUM))
+	plan.print("Adding wallet service running on port '{0}".format(PRIVATE_PORT_NUM))
 
 	used_ports = {
 		PORT_ID: PRIVATE_PORT_SPEC
@@ -80,7 +80,7 @@ def add_wallet(
 		cmd = [single_command_to_run],
 	)
 
-	add_service_result = add_service(SERVICE_ID, config)
+	add_service_result = plan.add_service(SERVICE_ID, config)
 
 	# TODO add a productized wait for availability for PORT_ID
 	# Note, doesn't work in old repo either
@@ -113,7 +113,7 @@ def generate_js_src_updating_commands(js_vars):
 		src_regex = "([,{])"+key+":[^,]*([,}])"
 		replacement_regexp = '\\1{0}:"{1}"\\2'.format(key, value)
 
-		print("Replacing variable '{0}' to '{1}' using regexp: '{2}'".format(key, value, src_regex))
+		plan.print("Replacing variable '{0}' to '{1}' using regexp: '{2}'".format(key, value, src_regex))
 		update_js_file_command = "sed -i -E 's{0}{1}{2}{3}{4}g' {5}".format(
 			JS_REPLACEMENT_SED_DELIMITER,
 			src_regex,
