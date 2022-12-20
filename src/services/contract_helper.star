@@ -64,6 +64,7 @@ VALIDATOR_KEY_PRETTY_PRINT_NUM_SPACES = 2
 
 
 def add_contract_helper_service(
+	plan,
 	db_private_url,
 	db_username,
 	db_user_password,

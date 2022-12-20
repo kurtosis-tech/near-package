@@ -39,7 +39,7 @@ AVAILABILITY_CMD  = [
 ]
 
 
-def add_contract_helper_db():
+def add_contract_helper_db(plan):
     plan.print("Adding contract helper Posgresql DB running on port '" + str(PORT_NUM) + "'")
     ports = {
         PORT_ID: PORT_SPEC

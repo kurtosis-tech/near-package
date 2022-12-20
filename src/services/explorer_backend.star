@@ -46,6 +46,7 @@ STATIC_ENVVARS = {
 
 
 def add_explorer_backend_service(
+    plan,
     near_node_private_rpc_url,
     indexer_db_private_url,
     indexer_db_username,

@@ -12,13 +12,13 @@ service_url = import_module("github.com/kurtosis-tech/near-package/src/service_u
 EXPLORER_WAMP_BACKEND_FRONTEND_SHARED_NETWORK_NAME = "localnet"
 
 
-def launch_near_network(backend_ip_address):
+def launch_near_network(plan, backend_ip_address):
 	plan.print("Launching contract helper postgresql")
-	contract_helper_db_info = contract_helper_postgresql.add_contract_helper_db()
+	contract_helper_db_info = contract_helper_postgresql.add_contract_helper_db(plan)
 	plan.print("Contract helper postgresql db info {0}".format(contract_helper_db_info))
 
 	plan.print("Launching contract helper dynamo db")
-	contract_helper_dynamodb_info = contract_helper_dynamodb.add_contract_helper_dynamo_db()
+	contract_helper_dynamodb_info = contract_helper_dynamodb.add_contract_helper_dynamo_db(plan)
 	plan.print("Contract helper dynamodb info {0}".format(contract_helper_dynamodb_info))
 
 	plan.print("Launching indexer")
@@ -32,6 +32,7 @@ def launch_near_network(backend_ip_address):
 
 	plan.print("Launching contract helper")
 	contract_helper_service_info = contract_helper.add_contract_helper_service(
+		plan,
 		contract_helper_db_info.private_url,
 		contract_helper_db_info.db_username,
 		contract_helper_db_info.db_user_password,
@@ -44,6 +45,7 @@ def launch_near_network(backend_ip_address):
 
 	plan.print("Launching explorer backend")
 	explorer_backend_info = explorer_backend.add_explorer_backend_service(
+		plan,
 		indexer_info.private_rpc_url,
 		contract_helper_db_info.private_url,
 		contract_helper_db_info.db_username,
@@ -56,6 +58,7 @@ def launch_near_network(backend_ip_address):
 
 	plan.print("Launching explorer frontend")
 	explorer_frontend_info = explorer_frontend.add_explorer_frontend_service(
+		plan,
 		backend_ip_address,
 		explorer_backend_info.private_url,
 		explorer_backend_info.public_url,
@@ -64,6 +67,7 @@ def launch_near_network(backend_ip_address):
 
 	plan.print("Launching wallet")
 	wallet_info = wallet.add_wallet(
+		plan,
 		backend_ip_address,
 		indexer_info.public_rpc_url,
 		contract_helper_service_info.public_url,

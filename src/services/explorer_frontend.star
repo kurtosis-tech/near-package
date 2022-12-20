@@ -16,6 +16,7 @@ ROOT_PATH = ""
 
 
 def add_explorer_frontend_service(
+	plan,
 	user_requested_backend_ip_address,
 	# The IP address to use for connecting to the backend services
 	explorer_backend_private_url,

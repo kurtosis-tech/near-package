@@ -43,6 +43,7 @@ JS_REPLACEMENT_SED_DELIMITER = "$"
 
 
 def add_wallet(
+	plan,
     user_requested_backend_ip_address,
     near_node_public_rpc_url,
     contract_helper_public_url,

@@ -4,8 +4,8 @@ input_parser = import_module("github.com/kurtosis-tech/near-package/src/package_
 near_network = import_module("github.com/kurtosis-tech/near-package/src/near_network.star")
 
 
-def run(args):
+def run(plan, args):
 	input_args_with_defaults = input_parser.parse_input(args)
 	plan.print("Starting the " + PACKAGE_NAME + " with input " + str(input_args_with_defaults))
-	output = near_network.launch_near_network(input_args_with_defaults.backend_ip_address)
+	output = near_network.launch_near_network(plan, input_args_with_defaults.backend_ip_address)
 	return output
