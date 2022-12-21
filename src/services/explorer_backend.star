@@ -95,7 +95,7 @@ def add_explorer_backend_service(
         "NEAR_EXPLORER_CONFIG__ARCHIVAL_RPC_URL": service_url.service_url_to_string(near_node_private_rpc_url)
     }
 
-    config = struct(
+    config = ServiceConfig(
         image = IMAGE,
         ports = ports,
         env_vars = env_vars,

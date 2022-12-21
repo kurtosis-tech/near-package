@@ -103,7 +103,7 @@ def add_contract_helper_service(
 	for key, value in STATIC_ENVVARS.items():
 		env_vars[key] = value
 
-	config = struct(
+	config = ServiceConfig(
 		image = IMAGE,
 		ports = used_ports,
 		public_ports = public_ports,

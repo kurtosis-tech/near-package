@@ -90,7 +90,7 @@ def add_explorer_frontend_service(
 		"NEAR_EXPLORER_CONFIG__BACKEND__SECURE": "false",
 	}
 
-	config = struct(
+	config = ServiceConfig(
 		image = IMAGE,
 		ports = used_ports,
 		public_ports  = public_ports,

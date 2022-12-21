@@ -73,7 +73,7 @@ def add_wallet(
 
 	single_command_to_run = " && ".join(commands_to_run)
 
-	config = struct(
+	config = ServiceConfig(
 		image = IMAGE,
 		ports = used_ports,
 		public_ports = public_ports,

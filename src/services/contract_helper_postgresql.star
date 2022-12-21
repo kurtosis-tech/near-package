@@ -45,7 +45,7 @@ def add_contract_helper_db(plan):
         PORT_ID: PORT_SPEC
     }
 
-    config = struct(
+    config = ServiceConfig(
         image = IMAGE,
         env_vars = STATIC_ENVVARS,
         ports = ports
