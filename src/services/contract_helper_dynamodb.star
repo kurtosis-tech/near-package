@@ -13,7 +13,7 @@ ROOT_PATH = ""
 
 def add_contract_helper_dynamo_db(plan):
 	plan.print("Adding contract helper DynamoDB running on default port '" + str(DEFAULT_PORT_NUM) + "'")
-	config = struct(
+	config = ServiceConfig(
 		image = IMAGE,
 		ports = {
 			PORT_ID: DEFAULT_PORT_SPEC

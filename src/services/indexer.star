@@ -61,7 +61,7 @@ def add_indexer(plan, db_private_url, db_username, db_password, db_name):
 		NEAR_CONFIGS_DIRPATH_ON_INDEXER_CONTAINER: upload_artifact_uuid
 	}
 
-	config = struct(
+	config = ServiceConfig(
 		image = IMAGE,
 		env_vars = env_vars,
 		entrypoint = ["sh", "-c"],
