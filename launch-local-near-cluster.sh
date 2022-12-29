@@ -75,7 +75,7 @@ function get_json_property() {
         echo "Error: A JSON property name must be provided" >&2
         return 1
     fi
-    cat "${package_output_filepath}" | grep "${property_name}" | awk '{print $NF}' | sed 's/^"//' | sed 's/",*$//'
+    cat "${package_output_filepath}" | grep "${property_name}" | tail -1 | awk '{print $NF}' | sed 's/^"//' | sed 's/",*$//'
 }
 
 validator_key_filepath="${package_exec_dirpath}/validator-key.json"
