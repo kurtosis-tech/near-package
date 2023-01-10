@@ -34,7 +34,7 @@ TIME_TO_SLEEP_FOR_VALIDATOR_KEYS = ["sleep", "10"]
 def add_indexer(plan, db_private_url, db_username, db_password, db_name):
 	plan.print("Adding indexer service...")
 	
-	upload_artifact_uuid = plan.upload_files(LOCALNET_CONFIG_DIRPATH_ON_PACKAGE, artifact_id = "indexer-config")
+	upload_artifact_uuid = plan.upload_files(LOCALNET_CONFIG_DIRPATH_ON_PACKAGE, name = "indexer-config")
 	private_ports = {
 		RPC_PORT_ID: RPC_PRIVATE_PORT_SPEC,
 		GOSSIP_PORT_ID: GOSSIP_PRIVATE_PORT_SPEC
