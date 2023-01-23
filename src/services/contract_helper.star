@@ -3,7 +3,7 @@ constants = import_module("github.com/kurtosis-tech/near-package/src/constants.s
 service_url = import_module("github.com/kurtosis-tech/near-package/src/service_url.star")
 
 
-SERVICE_ID = "contract-helper-service"
+SERVICE_NAME = "contract-helper-service"
 PORT_ID = "rest"
 PRIVATE_PORT_NUM = 3000
 PUBLIC_PORT_NUM = 8330
@@ -117,13 +117,13 @@ def add_contract_helper_service(
 		env_vars = env_vars
 	)
 
-	add_service_result = plan.add_service(SERVICE_ID, config)
+	add_service_result = plan.add_service(SERVICE_NAME, config)
 
 	# TODO add productized wait for port vailability
 	# also missing on old repo
 
 	private_url, public_url = service_url.get_private_and_public_url_for_port_id(
-		SERVICE_ID,
+		SERVICE_NAME,
 		add_service_result,
 		config,
 		PORT_ID,

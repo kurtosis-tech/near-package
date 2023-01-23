@@ -3,7 +3,7 @@ constants = import_module("github.com/kurtosis-tech/near-package/src/constants.s
 service_url = import_module("github.com/kurtosis-tech/near-package/src/service_url.star")
 
 
-SERVICE_ID = "contract-helper-db"
+SERVICE_NAME = "contract-helper-db"
 PORT_ID = "postgres"
 PORT_PROTOCOL = "postgres"
 IMAGE = "postgres:13.4-alpine3.14"
@@ -51,9 +51,9 @@ def add_contract_helper_db(plan):
         ports = ports
     )
 
-    add_service_result = plan.add_service(SERVICE_ID, config)
+    add_service_result = plan.add_service(SERVICE_NAME, config)
 
-    plan.wait(struct(service_id=SERVICE_ID, command=AVAILABILITY_CMD), "code", "==", constants.EXEC_COMMAND_SUCCESS_EXIT_CODE)
+    plan.wait(struct(service_id=SERVICE_NAME, command=AVAILABILITY_CMD), "code", "==", constants.EXEC_COMMAND_SUCCESS_EXIT_CODE)
 
     for database_to_create in DBS_TO_INITIALIZE:
         create_db_command  = [
@@ -63,11 +63,11 @@ def add_contract_helper_db(plan):
             "-c",
             "create database " + database_to_create + " with owner=" + POSTGRES_USER
         ]
-        create_db_command_result = plan.exec(struct(service_id=SERVICE_ID, command=create_db_command))
+        create_db_command_result = plan.exec(struct(service_id=SERVICE_NAME, command=create_db_command))
         plan.assert(create_db_command_result["code"], "==", constants.EXEC_COMMAND_SUCCESS_EXIT_CODE)
 
     private_url, _ = service_url.get_private_and_public_url_for_port_id(
-            SERVICE_ID,
+            SERVICE_NAME,
             add_service_result,
             config,
             PORT_ID,
