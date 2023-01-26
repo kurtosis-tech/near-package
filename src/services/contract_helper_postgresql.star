@@ -53,7 +53,7 @@ def add_contract_helper_db(plan):
 
     add_service_result = plan.add_service(SERVICE_NAME, config)
 
-    plan.wait(struct(service_name=SERVICE_NAME, command=AVAILABILITY_CMD), "code", "==", constants.EXEC_COMMAND_SUCCESS_EXIT_CODE)
+    plan.wait(ExecRecipe(service_name=SERVICE_NAME, command=AVAILABILITY_CMD), "code", "==", constants.EXEC_COMMAND_SUCCESS_EXIT_CODE)
 
     for database_to_create in DBS_TO_INITIALIZE:
         create_db_command  = [
