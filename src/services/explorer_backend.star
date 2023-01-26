@@ -3,7 +3,7 @@ constants = import_module("github.com/kurtosis-tech/near-package/src/constants.s
 service_url = import_module("github.com/kurtosis-tech/near-package/src/service_url.star")
 
 # Explorer Backend
-SERVICE_ID = "explorer-backend"
+SERVICE_NAME = "explorer-backend"
 IMAGE = "kurtosistech/near-explorer_backend:836d8d7"
 PORT_ID = "http"
 PORT_APP_PROTOCOL = "http"
@@ -105,10 +105,10 @@ def add_explorer_backend_service(
         public_ports = public_ports,
     )
 
-    add_service_result = plan.add_service(SERVICE_ID, config)
+    add_service_result = plan.add_service(SERVICE_NAME, config)
 
     private_url, public_url = service_url.get_private_and_public_url_for_port_id(
-        SERVICE_ID,
+        SERVICE_NAME,
         add_service_result,
         config,
         PORT_ID,

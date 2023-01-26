@@ -1,7 +1,7 @@
 shared_utils = import_module("github.com/kurtosis-tech/near-package/src/shared_utils.star")
 service_url = import_module("github.com/kurtosis-tech/near-package/src/service_url.star")
 
-SERVICE_ID = "contract-helper-dynamo-db"
+SERVICE_NAME = "contract-helper-dynamo-db"
 IMAGE = "amazon/dynamodb-local:1.20.0"
 
 PORT_ID = "default"
@@ -20,10 +20,10 @@ def add_contract_helper_dynamo_db(plan):
 		}
 	)
 
-	add_service_result = plan.add_service(SERVICE_ID, config)
+	add_service_result = plan.add_service(SERVICE_NAME, config)
 
 	private_url, _ = service_url.get_private_and_public_url_for_port_id(
-			SERVICE_ID,
+			SERVICE_NAME,
 			add_service_result,
 			config,
 			PORT_ID,

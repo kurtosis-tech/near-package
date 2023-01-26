@@ -4,7 +4,7 @@ service_url = import_module("github.com/kurtosis-tech/near-package/src/service_u
 wallet = import_module("github.com/kurtosis-tech/near-package/src/services/wallet.star")
 
 
-SERVICE_ID = "explorer-frontend"
+SERVICE_NAME = "explorer-frontend"
 PORT_ID = "http"
 PORT_PROTOCOL = "http"
 IMAGE= "kurtosistech/near-explorer_frontend:836d8d7"
@@ -98,13 +98,13 @@ def add_explorer_frontend_service(
 	)
 
 	
-	add_service_result = plan.add_service(SERVICE_ID, config)
+	add_service_result = plan.add_service(SERVICE_NAME, config)
 
 	# TODO add a productized way to wait for port availability
 	# Note this is broken on the old module as well
 
 	private_url, public_url = service_url.get_private_and_public_url_for_port_id(
-		SERVICE_ID,
+		SERVICE_NAME,
 		add_service_result,
 		config,
 		PORT_ID,

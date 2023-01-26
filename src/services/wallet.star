@@ -3,7 +3,7 @@ constants = import_module("github.com/kurtosis-tech/near-package/src/constants.s
 service_url = import_module("github.com/kurtosis-tech/near-package/src/service_url.star")
 
 
-SERVICE_ID = "wallet"
+SERVICE_NAME = "wallet"
 IMAGE = "kurtosistech/near-wallet:169ccfb61"
 PORT_ID = "http"
 PORT_PROTOCOL = "http"
@@ -81,13 +81,13 @@ def add_wallet(
 		cmd = [single_command_to_run],
 	)
 
-	add_service_result = plan.add_service(SERVICE_ID, config)
+	add_service_result = plan.add_service(SERVICE_NAME, config)
 
 	# TODO add a productized wait for availability for PORT_ID
 	# Note, doesn't work in old repo either
 
 	_, public_url = service_url.get_private_and_public_url_for_port_id(
-		SERVICE_ID,
+		SERVICE_NAME,
 		add_service_result,
 		config,
 		PORT_ID,

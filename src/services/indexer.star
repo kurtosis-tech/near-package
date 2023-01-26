@@ -2,7 +2,7 @@ shared_utils = import_module("github.com/kurtosis-tech/near-package/src/shared_u
 constants = import_module("github.com/kurtosis-tech/near-package/src/constants.star")
 service_url = import_module("github.com/kurtosis-tech/near-package/src/service_url.star")
 
-SERVICE_ID = "indexer-node"
+SERVICE_NAME = "indexer-node"
 IMAGE = "kurtosistech/near-indexer-for-explorer:2d66461"
 RPC_PRIVATE_PORT_NUM = 3030
 RPC_PUBLIC_PORT_NUM = 8332
@@ -71,13 +71,13 @@ def add_indexer(plan, db_private_url, db_username, db_password, db_name):
 		files = files
 	)
 
-	add_service_result = plan.add_service(SERVICE_ID, config)
+	add_service_result = plan.add_service(SERVICE_NAME, config)
 
 	validator_key_json = read_file(LOCALNET_CONFIG_DIRPATH_ON_PACKAGE + "/validator_key.json")
 	validator_key = json.decode(validator_key_json)
 
 	private_rpc_url, public_rpc_url = service_url.get_private_and_public_url_for_port_id(
-		SERVICE_ID,
+		SERVICE_NAME,
 		add_service_result,
 		config,
 		RPC_PORT_ID,
