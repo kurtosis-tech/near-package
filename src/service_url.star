@@ -11,7 +11,7 @@ def get_private_and_public_url_for_port_id(
 	path):
 	
 	if port_id not in service_result.ports:
-		fail("Expected service with ID {0} to have private port with port id {1}", service_name, port_id)
+		fail("Expected service with name {0} to have private port with port id {1}", service_name, port_id)
 
 	private_port = service_result.ports[port_id]
 
@@ -25,7 +25,7 @@ def get_private_and_public_url_for_port_id(
 	public_ports = service_config.public_ports
 
 	if port_id not in public_ports:
-		fail("Expected service with ID {0} to have public port with port id {1}", service_name, port_id)
+		fail("Expected service with name {0} to have public port with port id {1}", service_name, port_id)
 
 	public_port = public_ports[port_id]
 
