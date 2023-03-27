@@ -53,7 +53,7 @@ def add_contract_helper_db(plan):
 
     add_service_result = plan.add_service(SERVICE_NAME, config)
 
-    plan.wait(ExecRecipe(service_name=SERVICE_NAME, command=AVAILABILITY_CMD), "code", "==", constants.EXEC_COMMAND_SUCCESS_EXIT_CODE)
+    plan.wait(recipe=ExecRecipe(command=AVAILABILITY_CMD), field="code", assertion="==", target_value=constants.EXEC_COMMAND_SUCCESS_EXIT_CODE, service_name=SERVICE_NAME)
 
     for database_to_create in DBS_TO_INITIALIZE:
         create_db_command  = [
@@ -63,7 +63,7 @@ def add_contract_helper_db(plan):
             "-c",
             "create database " + database_to_create + " with owner=" + POSTGRES_USER
         ]
-        create_db_command_result = plan.exec(ExecRecipe(service_name=SERVICE_NAME, command=create_db_command))
+        create_db_command_result = plan.exec(recipe=ExecRecipe(command=create_db_command), service_name=SERVICE_NAME)
         plan.assert(create_db_command_result["code"], "==", constants.EXEC_COMMAND_SUCCESS_EXIT_CODE)
 
     private_url, _ = service_url.get_private_and_public_url_for_port_id(
