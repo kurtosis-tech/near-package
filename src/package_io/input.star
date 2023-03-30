@@ -4,7 +4,7 @@ def parse_input(input_args):
 	default_args = struct(
 		backend_ip_address = DEFAULT_BACKEND_IP_ADDRESS
 	)
-	if not "backend_ip_address" in input_args:
+	if "backend_ip_address" not in input_args:
 		return default_args
 
 	if type(input_args["backend_ip_address"]) != "string":
