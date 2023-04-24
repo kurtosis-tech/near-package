@@ -1,7 +1,7 @@
 NEAR PACKAGE
 ===========================
 
-This repository contains a [Kurtosis package](https://docs.kurtosis.com/reference/packages) for setting up a NEAR network locally on your machine using Kurtosis.
+This repository contains a [Kurtosis package](https://docs.kurtosis.com/concepts-reference/packages) for setting up a NEAR network locally on your machine using Kurtosis.
 
 The validator key of the node that it starts is:
 
