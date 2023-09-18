@@ -64,7 +64,7 @@ def add_contract_helper_db(plan):
             "create database " + database_to_create + " with owner=" + POSTGRES_USER
         ]
         create_db_command_result = plan.exec(recipe=ExecRecipe(command=create_db_command), service_name=SERVICE_NAME)
-        plan.assert(create_db_command_result["code"], "==", constants.EXEC_COMMAND_SUCCESS_EXIT_CODE)
+        plan.verify(create_db_command_result["code"], "==", constants.EXEC_COMMAND_SUCCESS_EXIT_CODE)
 
     private_url, _ = service_url.get_private_and_public_url_for_port_id(
             SERVICE_NAME,
