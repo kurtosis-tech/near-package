@@ -59,7 +59,7 @@ exec_output_filepath="${package_exec_dirpath}/exec-output.log"
 # The funky ${1+"${@}"} incantation is how you you feed arguments exactly as-is to a child script in Bash
 # ${*} loses quoting and ${@} trips set -e if no arguments are passed, so this incantation says, "if and only if
 #  ${1} exists, evaluate ${@}"
-if ! "${KURTOSIS_CMD}" run --enclave-id "${ENCLAVE_ID}" "${NEAR_KURTOSIS_PACKAGE}" ${1+"${@}"} 2>&1 | tee "${exec_output_filepath}"; then
+if ! "${KURTOSIS_CMD}" run --enclave "${ENCLAVE_ID}" "${NEAR_KURTOSIS_PACKAGE}" ${1+"${@}"} 2>&1 | tee "${exec_output_filepath}"; then
     echo "Error: An error occurred executing package '${NEAR_KURTOSIS_PACKAGE}'" >&2
     exit 1
 fi
