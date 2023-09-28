@@ -1,12 +1,12 @@
-contract_helper_postgresql = import_module("github.com/kurtosis-tech/near-package/src/services/contract_helper_postgresql.star")
-contract_helper_dynamodb = import_module("github.com/kurtosis-tech/near-package/src/services/contract_helper_dynamodb.star")
-indexer = import_module("github.com/kurtosis-tech/near-package/src/services/indexer.star")
-contract_helper = import_module("github.com/kurtosis-tech/near-package/src/services/contract_helper.star")
-explorer_backend = import_module("github.com/kurtosis-tech/near-package/src/services/explorer_backend.star")
-explorer_frontend = import_module("github.com/kurtosis-tech/near-package/src/services/explorer_frontend.star")
-wallet = import_module("github.com/kurtosis-tech/near-package/src/services/wallet.star")
-output_creator = import_module("github.com/kurtosis-tech/near-package/src/package_io/output.star")
-service_url = import_module("github.com/kurtosis-tech/near-package/src/service_url.star")
+contract_helper_postgresql = import_module("./services/contract_helper_postgresql.star")
+contract_helper_dynamodb = import_module("./services/contract_helper_dynamodb.star")
+indexer = import_module("./services/indexer.star")
+contract_helper = import_module("./services/contract_helper.star")
+explorer_backend = import_module("./services/explorer_backend.star")
+explorer_frontend = import_module("./services/explorer_frontend.star")
+wallet = import_module("./services/wallet.star")
+output_creator = import_module("./package_io/output.star")
+service_url = import_module("./service_url.star")
 
 
 EXPLORER_WAMP_BACKEND_FRONTEND_SHARED_NETWORK_NAME = "localnet"
