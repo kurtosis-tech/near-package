@@ -1,7 +1,7 @@
 PACKAGE_NAME = "near-package"
 
-input_parser = import_module("github.com/kurtosis-tech/near-package/src/package_io/input.star")
-near_network = import_module("github.com/kurtosis-tech/near-package/src/near_network.star")
+input_parser = import_module("./src/package_io/input.star")
+near_network = import_module("./src/near_network.star")
 
 
 def run(plan, args):

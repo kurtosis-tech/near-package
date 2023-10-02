@@ -1,5 +1,5 @@
-shared_utils = import_module("github.com/kurtosis-tech/near-package/src/shared_utils.star")
-service_url = import_module("github.com/kurtosis-tech/near-package/src/service_url.star")
+shared_utils = import_module("../shared_utils.star")
+service_url = import_module("../service_url.star")
 
 SERVICE_NAME = "contract-helper-dynamo-db"
 IMAGE = "amazon/dynamodb-local:1.20.0"

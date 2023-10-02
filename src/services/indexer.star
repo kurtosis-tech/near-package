@@ -1,6 +1,6 @@
-shared_utils = import_module("github.com/kurtosis-tech/near-package/src/shared_utils.star")
-constants = import_module("github.com/kurtosis-tech/near-package/src/constants.star")
-service_url = import_module("github.com/kurtosis-tech/near-package/src/service_url.star")
+shared_utils = import_module("../shared_utils.star")
+constants = import_module("../constants.star")
+service_url = import_module("../service_url.star")
 
 SERVICE_NAME = "indexer-node"
 IMAGE = "kurtosistech/near-indexer-for-explorer:2d66461"
@@ -17,7 +17,7 @@ GOSSIP_PRIVATE_PORT_SPEC = shared_utils.new_port_spec(GOSSIP_PRIVATE_PORT_NUM, s
 GOSSIP_PUBLIC_PORT_SPEC = shared_utils.new_port_spec(GOSSIP_PUBLIC_PORT_NUM, shared_utils.TCP_PROTOCOL)
 ROOT_PATH = ""
 
-LOCALNET_CONFIG_DIRPATH_ON_PACKAGE = "github.com/kurtosis-tech/near-package/static_files/near-configs/localnet"
+LOCALNET_CONFIG_DIRPATH_ON_PACKAGE = "/static_files/near-configs/localnet"
 NEAR_CONFIGS_DIRPATH_ON_INDEXER_CONTAINER = "/root/.near"
 
 DATABASE_URL_ENVVAR = "DATABASE_URL"

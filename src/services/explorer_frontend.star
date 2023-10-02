@@ -1,7 +1,7 @@
-shared_utils = import_module("github.com/kurtosis-tech/near-package/src/shared_utils.star")
-constants = import_module("github.com/kurtosis-tech/near-package/src/constants.star")
-service_url = import_module("github.com/kurtosis-tech/near-package/src/service_url.star")
-wallet = import_module("github.com/kurtosis-tech/near-package/src/services/wallet.star")
+shared_utils = import_module("../shared_utils.star")
+constants = import_module("../constants.star")
+service_url = import_module("../service_url.star")
+wallet = import_module("./wallet.star")
 
 
 SERVICE_NAME = "explorer-frontend"
